@@ -62,9 +62,12 @@ pipeline {
                 script {
                     sleep 5
                     sh 'response=$(curl -I http://18.209.28.234:30001 | grep "200 OK")'
-                    if ( $response = "HTTP/1.1 200 OK" ) {
-                        exit 0
-                    
+                    if ( response = "200" ) {
+                        echo "Server is Ok"
+                    }
+                    else {
+                        echo "Server is not OK"
+                        error("Smoke test against canary deployment failed.")
                     }
                 }
             }
