@@ -64,8 +64,8 @@ pipeline {
                     def response = sh(script:"curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK'", returnStdout: true)
                     println("response = ${response}")
                     
-                    if ("${response}" != 'HTTP/1.1 200 OK') {
-                        error("Smoke test against canary deployment failed.")
+                    if ("${response}" = "HTTP/1.1 200 OK") {
+                        println("Smoke test against canary deployment passed.")
                     }  
                 }
             }
