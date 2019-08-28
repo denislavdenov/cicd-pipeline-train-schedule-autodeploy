@@ -61,13 +61,16 @@ pipeline {
             steps {
                 script {
                     sleep 5
-                    def response = sh(script:"curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK'", returnStdout: true)
-                    println("response = ${response}")
+                    
                     sh '''
+                    response=$(curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK')
+                    echo "response = ${response}"
+
                     if [ "${response}" == "HTTP/1.1 200 OK" ]; then 
                         echo "Smoke test against canary deployment passed - ${response}."
                     else
                         echo "Smoke test against canary deployment failed - ${response}."
+                        exit 1
                     fi
                     '''
                 }
