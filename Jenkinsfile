@@ -60,13 +60,13 @@ pipeline {
             }
             steps {
                 script {
-                    sleep 5
-                    sh 'response=$(curl -I http://18.209.28.234:30001 | grep "200 OK")'
-                    if ( $response = "HTTP/1.1 200 OK" ) {
-                        exit 0
+                        sleep 5
+                        sh 'response=$(curl -I http://18.209.28.234:30001 | grep "200 OK")'
+                        if ( $response = "HTTP/1.1 200 OK" ) {
+                            exit 0
                         }
                         else {
-                        error("Smoke test against canary deployment failed.")
+                            error("Smoke test against canary deployment failed.")
                         }
                     }
                 }
