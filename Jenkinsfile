@@ -61,11 +61,8 @@ pipeline {
             steps {
                 script {
                     sleep 5
-                    def response = httpRequest (
-                        url: "http://$KUBE_MASTER_IP:30001/",
-                        timeout: 30
-                    )
-                    if (response.status != 200) {
+                    sh 'response=$(curl -I http://18.209.28.234:30001 | grep "200 OK")'
+                    if ($response != 200) {
                         error("Smoke test against canary deployment failed.")
                     }
                 }
