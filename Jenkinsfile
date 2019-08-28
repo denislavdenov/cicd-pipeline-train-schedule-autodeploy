@@ -67,7 +67,7 @@ pipeline {
                     if [ "${response}" == "HTTP/1.1 200 OK" ] 
                         echo "Smoke test against canary deployment passed - ${response}."
                     else
-                        error("Smoke test against canary deployment failed.")
+                        echo "Smoke test against canary deployment failed."
                     fi
                     '''
                 }
