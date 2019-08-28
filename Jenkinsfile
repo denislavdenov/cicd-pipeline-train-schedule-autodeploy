@@ -62,7 +62,9 @@ pipeline {
                 script {
                     sleep 5
                     sh 'curl -I http://$KUBE_MASTER_IP:30001 | grep "200 OK"'
-                   
+                    if (sh 'curl -I http://$KUBE_MASTER_IP:30001 | grep "200 OK"' = "200") {
+                        echo "Smoke test against canary deployment passed."
+                    }
                 }
             }
         }
