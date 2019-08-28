@@ -66,7 +66,7 @@ pipeline {
                     response=$(curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK')
                     echo "response = ${response}"
 
-                    if [ "${response}" == "HTTP/1.1 200 OK" ]; then 
+                    if [ $response == 'HTTP/1.1 200 OK' ]; then 
                         echo "Smoke test against canary deployment passed - ${response}."
                     else
                         echo "Smoke test against canary deployment failed - ${response}."
