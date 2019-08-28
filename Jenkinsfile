@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script {
                     sleep 5
-                    def response = sh(script:"curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK'")
+                    def response = sh(script:"curl -I http://$KUBE_MASTER_IP:30001 | grep '200 OK'", returnStdout: true)
                     println("response = ${response}")
                     
                    
