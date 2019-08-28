@@ -60,7 +60,7 @@ pipeline {
             }
             steps {
                 script {
-                    
+                    sleep (time: 25)
                     def response = httpRequest (
                         url: "http://$KUBE_MASTER_IP:30001/",
                         timeout: 60
