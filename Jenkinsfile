@@ -65,7 +65,7 @@ pipeline {
                     println("response = ${response}")
                     
                     if ("${response}" == "HTTP/1.1 200 OK") {
-                        println("Smoke test against canary deployment passed.")
+                        println("Smoke test against canary deployment passed - ${response}.")
                     }  
                 }
             }
