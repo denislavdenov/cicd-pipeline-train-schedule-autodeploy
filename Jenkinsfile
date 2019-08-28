@@ -62,8 +62,8 @@ pipeline {
                 script {
                     sleep 5
                     sh 'response=$(curl -I http://$KUBE_MASTER_IP:30001 | grep "200 OK")'
-                    if (!response) {
-                        error("Smoke test against canary deployment failed.")
+                    if ($response) {
+                        echo "Smoke test against canary deployment passed."
                     }
                 }
             }
