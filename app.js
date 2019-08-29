@@ -36,6 +36,12 @@ app.get('/generate-cpu-load', function(req, res, next) {
   for (i = 0; i < 1000000; i++) {
     val += Math.sqrt(val);
   }
+  for (i = 0; i < 1000000; i++) {
+    val += Math.sqrt(val);
+  }
+  for (i = 0; i < 1000000; i++) {
+    val += Math.sqrt(val);
+  }
   res.status(200).send('Doing a bunch of calculations!')
 });
 
